@@ -2,9 +2,12 @@
   "name": "my-personal-page",
   "version": "1.0.0",
   "description": "My personal page",
-  "main": "index.js",
   "repository": "git@github.com:Wils3B/my-personal-page.git",
   "author": "Wilson Gouanet <wilstito@gmail.com>",
   "license": "GPL 3",
-  "private": false
+  "private": true,
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
 }
