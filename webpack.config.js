@@ -1,9 +1,10 @@
 const path = require('path');
 const indexPath = require.resolve('./src/html/index.html');
+const pathToMainJs = require.resolve('./src/js/index.js');
 
 module.exports = {
   mode: 'production',
-  entry: indexPath,
+  entry: [indexPath, pathToMainJs],
   output: {
     filename: 'index.build.html',
     path: path.resolve(__dirname, 'build'),
@@ -36,6 +37,24 @@ module.exports = {
           },
           'extract-loader',
           'html-loader',
+        ],
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[contenthash].js',
+            },
+          },
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
         ],
       },
     ],
